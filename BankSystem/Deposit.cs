@@ -17,10 +17,9 @@ namespace BankSystem
             InitializeComponent(); 
             string currencyOfUser = BankManagment.user.Currency;
             var user = BankManagment.user;
-            if (currencyOfUser != null)
+            if (BankManagment.user.Balance != 0)
             {
-                moneyShow.Text = user.Balance.ToString() + " " + currencyOfUser;
-                currency.Visible = false;
+                moneyShow.Text = user.Balance.ToString() + " " + "BGN";
             }
             else moneyShow.Text = "You have no money!";
         }
@@ -29,19 +28,15 @@ namespace BankSystem
         {
             string currencyOfUser = BankManagment.user.Currency;
             string currencyOfMoney = currencyOfUser;
-            if (currencyOfUser == null)
-            {
-                currencyOfMoney = currency.Text;
-            }
 
             var money = double.Parse(amount.Text);
             try
             {
                 MySqlDatabase.DepositToBank(money, currencyOfMoney);
-                moneyShow.Text = BankManagment.user.Balance.ToString() + " " + currencyOfMoney;
+                moneyShow.Text = BankManagment.user.Balance.ToString() + " " + "BGN";
             }
             catch (Exception ex)
-            {
+            { 
                 errorLabel.Text = ex.Message;
             }
         }

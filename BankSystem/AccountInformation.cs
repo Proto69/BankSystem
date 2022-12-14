@@ -17,9 +17,7 @@ namespace BankSystem
             InitializeComponent();
             username.Text = $"Your username is: {BankManagment.user.Username}";
             money.Text = BankManagment.user.Balance.ToString();
-            var currency1 = BankManagment.user.Currency;
-            if (currency1 != null) currency.Text = currency1;
-            else currency.Text = "No chosen currency!";
+            currency.Text = "BGN";
         }
     }
 }

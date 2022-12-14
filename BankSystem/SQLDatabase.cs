@@ -11,7 +11,7 @@ namespace BankSystem
     //Ready
     internal class MySqlDatabase
     {
-        private static readonly string connectionString = "Server=localhost;Database=bank;Uid=root;Pwd=12345;";
+        private static readonly string connectionString = "Server=sql.freedb.tech;Database=freedb_BankManagment;Uid=freedb_Proto68;Pwd=;";
         private static readonly MySqlConnection connection = new(connectionString);
 
         //Done
@@ -27,12 +27,14 @@ namespace BankSystem
             connection.Open();
 
             MySqlCommand command = new MySqlCommand(@"
-            INSERT INTO users (username, password) 
-            VALUES (@value1, @value2)", connection);
+            INSERT INTO users (username, password, balance, currency) 
+            VALUES (@value1, @value2, @value3, @value4)", connection);
 
             // Set the values for the parameters in the SQL query1
             command.Parameters.AddWithValue("@value1", person.Username);
             command.Parameters.AddWithValue("@value2", person.Password);
+            command.Parameters.AddWithValue("@value3", 0);
+            command.Parameters.AddWithValue("@value4", "BGN");
 
             // Execute the SQL query1
             command.ExecuteNonQuery();
@@ -60,7 +62,7 @@ namespace BankSystem
             while (reader.Read())
             {
                 string password2 = reader["password"].ToString();
-                double balance = double.Parse(reader["money"].ToString());
+                double balance = double.Parse(reader["balance"].ToString());
                 string currency = reader["currency"].ToString();
 
                 if (password == password2)
@@ -90,7 +92,7 @@ namespace BankSystem
 
             string query1 = @"
             UPDATE users 
-            SET money = @money, currency = @currency
+            SET balance = @money, currency = @currency
             WHERE username = @username;
             ";
 
@@ -102,7 +104,7 @@ namespace BankSystem
             MySqlCommand cmd1 = new(query1, connection);
             cmd1.Parameters.AddWithValue("@username", username);
             cmd1.Parameters.AddWithValue("@money", BankManagment.user.Balance + money);
-            cmd1.Parameters.AddWithValue("@currency", currencyOfMoney);
+            cmd1.Parameters.AddWithValue("@currency", "BGN");
 
             string date = DateTime.Now.ToString("HH:mm dd.MM.yyyy");
 
@@ -150,7 +152,7 @@ namespace BankSystem
 
             string query = @"
             UPDATE users 
-            SET money = @money 
+            SET balance = @money 
             WHERE username = @username
             ";
 
@@ -211,7 +213,15 @@ namespace BankSystem
 
         private static void AddLog(string date, string type, double amount)
         {
-            TransactionLogs log = new(BankManagment.user.Logs.Last().Id + 1, date, type, amount);
+            TransactionLogs log;
+            try
+            {
+                log = new(BankManagment.user.Logs.Last().Id + 1, date, type, amount);
+            }
+            catch
+            {
+                log = new(0, date, type, amount);
+            }
             BankManagment.user.Logs.Add(log);
         }
     }

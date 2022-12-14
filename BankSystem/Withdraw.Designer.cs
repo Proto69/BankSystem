@@ -42,7 +42,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(345, 248);
+            this.label3.Location = new System.Drawing.Point(331, 249);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(521, 37);
             this.label3.TabIndex = 11;
@@ -63,7 +63,7 @@
             // 
             this.amount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.amount.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.amount.Location = new System.Drawing.Point(452, 308);
+            this.amount.Location = new System.Drawing.Point(441, 303);
             this.amount.Name = "amount";
             this.amount.Size = new System.Drawing.Size(304, 43);
             this.amount.TabIndex = 8;
@@ -79,9 +79,9 @@
             this.button1.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(345, 414);
+            this.button1.Location = new System.Drawing.Point(331, 414);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(521, 127);
+            this.button1.Size = new System.Drawing.Size(535, 127);
             this.button1.TabIndex = 7;
             this.button1.Text = "Withdraw your money!";
             this.button1.UseVisualStyleBackColor = false;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,11 @@ namespace BankSystem
         public Withdraw()
         {
             InitializeComponent();
-            moneyShow.Text = BankManagment.user.Balance.ToString() + " " + BankManagment.user.Currency;
+            if (BankManagment.user.Balance != 0)
+            {
+                moneyShow.Text = BankManagment.user.Balance.ToString() + " " + "BGN";
+            }
+            else moneyShow.Text = "You have no money!";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -24,7 +29,7 @@ namespace BankSystem
             try
             {
                 MySqlDatabase.WithdrawFromBank(amountOfMoney);
-                moneyShow.Text = BankManagment.user.Balance.ToString() + " " + BankManagment.user.Currency;
+                moneyShow.Text = BankManagment.user.Balance.ToString() + " BGN";
             }
             catch (Exception ex)
             {

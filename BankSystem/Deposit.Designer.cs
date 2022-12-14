@@ -30,11 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Deposit));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.moneyShow = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.amount = new System.Windows.Forms.TextBox();
-            this.currency = new System.Windows.Forms.DomainUpDown();
             this.errorLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -51,6 +50,15 @@
             this.panel1.Size = new System.Drawing.Size(311, 655);
             this.panel1.TabIndex = 0;
             // 
+            // moneyShow
+            // 
+            this.moneyShow.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.moneyShow.Location = new System.Drawing.Point(0, 378);
+            this.moneyShow.Name = "moneyShow";
+            this.moneyShow.Size = new System.Drawing.Size(311, 103);
+            this.moneyShow.TabIndex = 1;
+            this.moneyShow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -61,15 +69,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Your money now:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // moneyShow
-            // 
-            this.moneyShow.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.moneyShow.Location = new System.Drawing.Point(0, 378);
-            this.moneyShow.Name = "moneyShow";
-            this.moneyShow.Size = new System.Drawing.Size(311, 103);
-            this.moneyShow.TabIndex = 1;
-            this.moneyShow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
             // 
@@ -93,22 +92,11 @@
             // 
             this.amount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.amount.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.amount.Location = new System.Drawing.Point(334, 290);
+            this.amount.Location = new System.Drawing.Point(437, 303);
             this.amount.Name = "amount";
             this.amount.Size = new System.Drawing.Size(304, 43);
             this.amount.TabIndex = 2;
             this.amount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // currency
-            // 
-            this.currency.Items.Add("Euro");
-            this.currency.Items.Add("Lev");
-            this.currency.Items.Add("Ruble");
-            this.currency.Location = new System.Drawing.Point(713, 304);
-            this.currency.Name = "currency";
-            this.currency.Size = new System.Drawing.Size(142, 27);
-            this.currency.TabIndex = 3;
-            this.currency.Text = "Choose Currency";
             // 
             // errorLabel
             // 
@@ -136,7 +124,6 @@
             this.BackColor = System.Drawing.Color.LightCyan;
             this.Controls.Add(this.label3);
             this.Controls.Add(this.errorLabel);
-            this.Controls.Add(this.currency);
             this.Controls.Add(this.amount);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
@@ -155,7 +142,6 @@
         private Label label1;
         private Button button1;
         private TextBox amount;
-        private DomainUpDown currency;
         private Label errorLabel;
         private Label label3;
     }
